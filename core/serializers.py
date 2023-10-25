@@ -31,16 +31,14 @@ class PessoasSerializer(serializers.ModelSerializer):
         instance.nome = validated_data.get('nome', instance.nome)
         instance.sobrenome = validated_data.get(
             'sobrenome', instance.sobrenome)
+        instance.telefone = validated_data.get(
+            'telefone', instance.telefone)
         instance.save()
 
         informacoes_sensiveis_instance.cpf = informacoes_sensiveis_data.get(
             'cpf', informacoes_sensiveis_instance.cpf)
         informacoes_sensiveis_instance.identidade = informacoes_sensiveis_data.get(
             'identidade', informacoes_sensiveis_instance.identidade)
-        informacoes_sensiveis_instance.save()
 
         return instance
 
-    def delete(self, instance):
-        instance.InformacoesSensiveis.delete()
-        instance.delete()
