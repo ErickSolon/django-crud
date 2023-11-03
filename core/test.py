@@ -10,4 +10,4 @@ class PessoasTestCase(TestCase):
         
     def test_model_informacoesSensiveis_existe(self):
         informacoes = InformacoesSensiveis.objects.count()
-        self.assertIsNotNone(informacoes, 0)
+        self.assertEqual(informacoes, 0)
